@@ -1,6 +1,7 @@
 const POLL_INTERVAL     = 5000;
 let isPolling           = false;
 
+// Receive data from main UI thread
 onmessage = function(e) {
     console.log('Worker message', e);
 
@@ -21,7 +22,8 @@ function pollAlerts() {
     fetch('https://cataas.com/cat')
         .then(response => response.blob())
         .then(response => {
-            console.log(response);
+            
+            // Send data back to main UI thread
             postMessage(response);
 
             setTimeout(() => {

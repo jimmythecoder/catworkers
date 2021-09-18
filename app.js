@@ -4,8 +4,6 @@ const startBtn  = document.getElementById('start-btn');
 const stopBtn   = document.getElementById('stop-btn');
 const catImg    = document.getElementById('cat-img');
 
-let isPolling = false;
-
 alerts.onmessage = (e) => {
     console.log('Received message:', e.data);
 
@@ -21,7 +19,6 @@ startBtn.addEventListener('click', () => {
     alerts.postMessage('start');
 
     // Update UI
-    isPolling = true;
     startBtn.setAttribute('disabled', true);
     stopBtn.removeAttribute('disabled');
 });
@@ -32,7 +29,6 @@ stopBtn.addEventListener('click', () => {
     alerts.postMessage('stop');
 
     // Update UI
-    isPolling = false;
     startBtn.removeAttribute('disabled');
     stopBtn.setAttribute('disabled', true);
 });
